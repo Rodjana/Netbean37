@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFacultyTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFacultyLabel_facID}" for="facID" />
+                    <h:inputText id="facID" value="#{facultyController.selected.facID}" title="#{bundle.EditFacultyTitle_facID}" required="true" requiredMessage="#{bundle.EditFacultyRequiredMessage_facID}"/>
+                    <h:outputLabel value="#{bundle.EditFacultyLabel_facName}" for="facName" />
+                    <h:inputText id="facName" value="#{facultyController.selected.facName}" title="#{bundle.EditFacultyTitle_facName}" />
+                </h:panelGrid>
+                <h:commandLink action="#{facultyController.update}" value="#{bundle.EditFacultySaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFacultyViewLink}"/>
+                <br />
+                <h:commandLink action="#{facultyController.prepareList}" value="#{bundle.EditFacultyShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFacultyIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

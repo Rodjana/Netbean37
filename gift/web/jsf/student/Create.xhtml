@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stuID}" for="stuID" />
+                    <h:inputText id="stuID" value="#{studentController.selected.stuID}" title="#{bundle.CreateStudentTitle_stuID}" required="true" requiredMessage="#{bundle.CreateStudentRequiredMessage_stuID}"/>
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stuName}" for="stuName" />
+                    <h:inputText id="stuName" value="#{studentController.selected.stuName}" title="#{bundle.CreateStudentTitle_stuName}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stuEmail}" for="stuEmail" />
+                    <h:inputText id="stuEmail" value="#{studentController.selected.stuEmail}" title="#{bundle.CreateStudentTitle_stuEmail}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stuTel}" for="stuTel" />
+                    <h:inputText id="stuTel" value="#{studentController.selected.stuTel}" title="#{bundle.CreateStudentTitle_stuTel}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stuBirthday}" for="stuBirthday" />
+                    <h:inputText id="stuBirthday" value="#{studentController.selected.stuBirthday}" title="#{bundle.CreateStudentTitle_stuBirthday}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_advID}" for="advID" />
+                    <h:selectOneMenu id="advID" value="#{studentController.selected.advID}" title="#{bundle.CreateStudentTitle_advID}" >
+                        <f:selectItems value="#{advisorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_facID}" for="facID" />
+                    <h:selectOneMenu id="facID" value="#{studentController.selected.facID}" title="#{bundle.CreateStudentTitle_facID}" >
+                        <f:selectItems value="#{facultyController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_majID}" for="majID" />
+                    <h:selectOneMenu id="majID" value="#{studentController.selected.majID}" title="#{bundle.CreateStudentTitle_majID}" >
+                        <f:selectItems value="#{majorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_couID}" for="couID" />
+                    <h:selectOneMenu id="couID" value="#{studentController.selected.couID}" title="#{bundle.CreateStudentTitle_couID}" >
+                        <f:selectItems value="#{subjectController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{studentController.create}" value="#{bundle.CreateStudentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{studentController.prepareList}" value="#{bundle.CreateStudentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateStudentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

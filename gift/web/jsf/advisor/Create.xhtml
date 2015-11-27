@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAdvisorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAdvisorLabel_advID}" for="advID" />
+                    <h:inputText id="advID" value="#{advisorController.selected.advID}" title="#{bundle.CreateAdvisorTitle_advID}" required="true" requiredMessage="#{bundle.CreateAdvisorRequiredMessage_advID}"/>
+                    <h:outputLabel value="#{bundle.CreateAdvisorLabel_advName}" for="advName" />
+                    <h:inputText id="advName" value="#{advisorController.selected.advName}" title="#{bundle.CreateAdvisorTitle_advName}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{advisorController.create}" value="#{bundle.CreateAdvisorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{advisorController.prepareList}" value="#{bundle.CreateAdvisorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAdvisorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
